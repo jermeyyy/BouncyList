@@ -1,18 +1,31 @@
 package pl.jermey.bouncylist
 
+import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
+import org.koin.standalone.StandAloneContext
+import org.koin.test.KoinTest
 import pl.jermey.bouncylist.viewmodel.MainViewModel
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-class MainViewModelTest {
+class MainViewModelTest : KoinTest {
+
+    @Before
+    fun before() {
+        StandAloneContext.startKoin(testModules)
+    }
+
+    @After
+    fun after() {
+        StandAloneContext.closeKoin()
+    }
+
     @Test
     fun addition_isCorrect() {
         val viewModel = MainViewModel()
+        val testObserver = viewModel.viewContract.test()
+        viewModel.dispatchTimer()
+        testObserver.assertNoErrors()
         assertEquals(4, 2 + 2)
     }
 }
