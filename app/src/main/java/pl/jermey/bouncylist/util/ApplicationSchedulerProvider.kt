@@ -27,5 +27,8 @@ interface SchedulerProvider {
     fun computation(): Scheduler
 }
 
-inline fun <reified T> Observable<T>.schedule(schedulerProvider: SchedulerProvider): Observable<T> = this.subscribeOn(schedulerProvider.io())
+inline fun <reified T> Observable<T>.scheduleIO(schedulerProvider: SchedulerProvider): Observable<T> = this.subscribeOn(schedulerProvider.io())
+        .observeOn(schedulerProvider.ui())
+
+inline fun <reified T> Observable<T>.scheduleComputation(schedulerProvider: SchedulerProvider): Observable<T> = this.subscribeOn(schedulerProvider.io())
         .observeOn(schedulerProvider.ui())

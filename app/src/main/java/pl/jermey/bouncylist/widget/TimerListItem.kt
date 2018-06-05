@@ -7,7 +7,8 @@ import pl.jermey.bouncylist.data.TimerEntity
 import pl.jermey.bouncylist.databinding.TimerListItemBinding
 import pl.jermey.bouncylist.util.KAbstractItem
 
-class TimerListItem(val timerEntity: TimerEntity) : KAbstractItem<TimerListItem, TimerListItem.ViewHolder>(R.layout.timer_list_item, ::ViewHolder) {
+class TimerListItem(private val timerEntity: TimerEntity)
+    : KAbstractItem<TimerEntity, TimerListItem, TimerListItem.ViewHolder>(timerEntity, R.layout.timer_list_item, ::ViewHolder) {
 
     override fun bindView(holder: ViewHolder, payloads: MutableList<Any>) {
         super.bindView(holder, payloads)

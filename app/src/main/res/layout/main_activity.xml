@@ -6,6 +6,8 @@
 
     <data>
 
+        <import type="pl.jermey.bouncylist.R" />
+
         <variable
             name="viewModel"
             type="pl.jermey.bouncylist.viewmodel.MainViewModel" />
@@ -13,6 +15,10 @@
         <variable
             name="adapter"
             type="android.support.v7.widget.RecyclerView.Adapter" />
+
+        <variable
+            name="itemAnimator"
+            type="android.support.v7.widget.RecyclerView.ItemAnimator" />
 
     </data>
 
@@ -53,8 +59,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adapter="@{adapter}"
+            app:itemAnimator="@{itemAnimator}"
+            app:itemDecoratorDrawable="@{R.drawable.separator}"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            tools:listitem="@android:layout/simple_list_item_1" />
+            tools:listitem="@layout/timer_list_item" />
 
     </LinearLayout>
 

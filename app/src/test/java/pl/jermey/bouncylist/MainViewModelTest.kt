@@ -23,8 +23,8 @@ class MainViewModelTest : KoinTest {
     @Test
     fun addition_isCorrect() {
         val viewModel = MainViewModel()
-        val testObserver = viewModel.viewContract.test()
-        viewModel.dispatchTimer()
+        val testObserver = viewModel.listEventSubject.test()
+        viewModel.dispatchTimer(it)
         testObserver.assertNoErrors()
         assertEquals(4, 2 + 2)
     }

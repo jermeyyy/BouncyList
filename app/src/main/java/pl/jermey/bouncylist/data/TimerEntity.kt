@@ -1,8 +1,10 @@
 package pl.jermey.bouncylist.data
 
-data class TimerEntity(var timer: String,
-                       val color: TimerColor)
+import android.databinding.BaseObservable
+
+data class TimerEntity(var timer: Long,
+                       val color: TimerColor) : BaseObservable()
 
 enum class TimerColor {
-    BLUE, RED, GREEN, YELLOW
+    BLUE, RED
 }

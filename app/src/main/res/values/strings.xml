@@ -2,4 +2,7 @@
     <string name="app_name">BouncyList</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
+    <string name="item_added">Item added</string>
+    <string name="item_deleted">Item deleted</string>
+    <string name="item_changed">Item changed</string>
 </resources>
