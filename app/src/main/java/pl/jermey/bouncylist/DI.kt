@@ -4,6 +4,7 @@ import org.koin.android.architecture.ext.viewModel
 import org.koin.dsl.module.applicationContext
 import pl.jermey.bouncylist.service.*
 import pl.jermey.bouncylist.util.ApplicationSchedulerProvider
+import pl.jermey.bouncylist.util.SchedulerProvider
 import pl.jermey.bouncylist.util.TestSchedulerProvider
 import pl.jermey.bouncylist.viewmodel.MainViewModel
 
@@ -19,8 +20,12 @@ fun operandProvider(test: Boolean): OperandProvider {
     return if (test) TestOperandProvider() else RandomOperandProvider()
 }
 
+fun schedulerProvider(test: Boolean): SchedulerProvider {
+    return if (test) TestSchedulerProvider() else ApplicationSchedulerProvider()
+}
+
 fun rxModule(test: Boolean = false) = applicationContext {
-    bean { if (test) TestSchedulerProvider() else ApplicationSchedulerProvider() }
+    bean { schedulerProvider(test) }
 }
 
 val appModules = listOf(bouncyListModule(), rxModule())

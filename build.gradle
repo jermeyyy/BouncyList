@@ -29,8 +29,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-task copyTestClasses(type: Copy) {
-    from "build/tmp/kotlin-classes/debug"
-    into "build/intermediates/classes/debug"
-}

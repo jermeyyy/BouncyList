@@ -51,7 +51,7 @@ class MainViewModel(private val timerService: TimerService, private val operandP
                     timerList[position].timer += timerList[previousIndex].timer
                     listEventSubject.onNext(ListEvent(ListEvent.Type.CHANGE, position))
                 }
-                else -> throw RuntimeException("Operation out of range")
+                else -> listEventSubject.onError(RuntimeException("Operation out of range"))
             }
         }
     }

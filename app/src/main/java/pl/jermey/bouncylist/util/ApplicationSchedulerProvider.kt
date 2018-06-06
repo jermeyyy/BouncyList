@@ -14,11 +14,11 @@ class ApplicationSchedulerProvider : SchedulerProvider {
 }
 
 class TestSchedulerProvider : SchedulerProvider {
-    override fun io(): Scheduler = Schedulers.trampoline()
+    override fun io(): Scheduler = Schedulers.io()
 
-    override fun ui(): Scheduler = Schedulers.trampoline()
+    override fun ui(): Scheduler = Schedulers.newThread()
 
-    override fun computation(): Scheduler = Schedulers.trampoline()
+    override fun computation(): Scheduler = Schedulers.computation()
 }
 
 interface SchedulerProvider {
